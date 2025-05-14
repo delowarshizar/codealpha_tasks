@@ -23,23 +23,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding-top: 80px; /* space for navbar */
+    box-sizing: border-box;
+    flex-direction: column;
 }
 
 .navbar {
-  display: flex;
-  align-items: center;
-  padding: 10px 10px; 
-  background-color: var(--box);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #01c40bd3;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-  justify-content: start; 
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--box);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #01c40bd3;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-
 
 .navbar .logo {
     font-weight: bold;
@@ -48,10 +51,12 @@ body {
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 50px;
-  margin-left: auto;
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links li a {
@@ -66,13 +71,13 @@ body {
     color: rgba(246, 246, 246, 0.625);
 }
 
-
 .container {
 
-    padding: 30px;
-    border-radius: 12px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
+    margin: auto;
+    box-sizing: border-box;
 }
 
 h2 {
@@ -80,35 +85,37 @@ h2 {
 }
 
 input {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 6px;
     background-color: #d9e5e7cf;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 button {
     padding: 10px 20px;
     background-color: var(--button);
-    color: #d9e5e7cf;
+    color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
 button:hover {
     background-color: var(--button-hover);
 }
-#theme-icon{
-    size: 10px;
-}
+
 #result,
 #nextBirthday {
     margin-top: 20px;
     font-size: 16px;
+    word-wrap: break-word;
 }
 
 .toggle-container {
@@ -177,10 +184,53 @@ body.dark .nav-links li a.active {
     border-radius: 50%;
 }
 
-input:checked+.slider {
+input:checked + .slider {
     background-color: #2196f3;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
     transform: translateX(18px);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    input {
+        padding: 8px;
+    }
+
+    .toggle-container {
+        justify-content: center;
+    }
 }
